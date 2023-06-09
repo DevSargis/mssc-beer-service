@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/beer")
+@RequestMapping("/api/v1/beer/")
 public class BeerController {
 
     private final BeerService beerService;
@@ -30,7 +30,7 @@ public class BeerController {
         HttpHeaders headers = new HttpHeaders();
 
         //todo add hostname to url
-        headers.add("Location", "/api/v1/beer/"+beerDto.getId().toString());
+        headers.add("Location", "/api/v1/beer/"+saveDto.getId().toString());
         return new ResponseEntity(headers, HttpStatus.CREATED);
     }
 
@@ -42,6 +42,7 @@ public class BeerController {
 
     @DeleteMapping("/{beerId}")
     @ResponseStatus(HttpStatus.NO_CONTENT) // we can also do following way that we can show our endpoint doesn't return any response
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public void deleteBeerById(@PathVariable("beerId") UUID beerId){
         beerService.delete(beerId);
     }

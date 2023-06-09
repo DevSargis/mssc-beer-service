@@ -1,5 +1,6 @@
 package guru.springframwork.msscbeerservice.Services;
 
+import guru.springframwork.msscbeerservice.Enums.BeerStyleEnum;
 import guru.springframwork.msscbeerservice.Model.BeerDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ public class BeerService {
         return BeerDto.builder()
                 .id(UUID.randomUUID())
                 .beerName("Gyumry")
-                .beerStyle("Kanach guynov")
+                .beerStyle(BeerStyleEnum.PORTER)
                 .build();
     }
     public BeerDto saveNewBeer(BeerDto beerDto) {
